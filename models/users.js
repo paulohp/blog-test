@@ -3,11 +3,11 @@ module.exports = function (app) {
 
 	var UserSchema = new Schema({
 		email: {type: String, required: true, index: {unique: true}},
-		provider: 'string',
+		password: {type: String, required: true},		
 		hashed_password: 'string',
 		salt: 'string'
 	});
 
 
-	return db.model('Users', UserSchema);
+	return db.model('users', UserSchema);
 }
