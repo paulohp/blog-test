@@ -1,20 +1,20 @@
 {
-  "name": "blogtest",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "start": "node app.js",
-    "test": "NODE_ENV=test ./node_modules/mocha/bin/mocha test/*.js"
-  },
-  "dependencies": {
-    "express": "3.4.0",
-    "express-load": "1.1.7",
-    "ejs": "*",
-    "mongoose" : "*"
-  },
-  "devDependencies": {
-    "mocha": "*",
-    "should": "*",
-    "supertest": "*"
-  }
+	"name": "blogtest",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"start": "node app.js",
+		"test": "NODE_ENV=test ./node_modules/mocha/bin/mocha test/*.js"
+	},
+	"dependencies": {
+		"express": "3.4.0",
+		"express-load": "1.1.7",
+		"ejs": "*",
+		"mongoose" : "*"
+	},
+	"devDependencies": {
+		"mocha": "*",
+		"should": "*",
+		"supertest": "*"
+	}
 }

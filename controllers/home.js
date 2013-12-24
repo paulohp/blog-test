@@ -13,7 +13,6 @@ module.exports = function (app) {
 			res.render('home/cadastrar');
 		},
 		login : function (req, res) {
-			console.log(req);
 			var query = { email : req.body.user.email };
 			User.findOne(query)
 				.select('email password')
@@ -28,7 +27,6 @@ module.exports = function (app) {
 				});
 		},
 		signup : function (req, res) {
-			console.log(req);
 			var query = req.body.user;
 			User.create(query, function (err, user) {
 				if (err) {
