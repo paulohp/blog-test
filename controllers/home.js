@@ -1,9 +1,11 @@
 module.exports = function (app) {
 
 	var User = app.models.users;
+	var Post = app.models.posts;
 
 	var HomeController = {
 		index : function (req, res) {
+			Post.find();
 			res.render('home/index');
 		},
 		entrar : function (req, res) {
