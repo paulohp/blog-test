@@ -3,7 +3,11 @@ module.exports = function (app) {
 		index : function (req, res) {
 			res.render('home/index');
 		},
+		entrar : function (req, res) {
+			res.render('home/entrar');
+		},
 		login : function (req, res) {
+			console.log(req)
 			var email = req.body.user.email;
 			var password = req.body.user.password;
 
