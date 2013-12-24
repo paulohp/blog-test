@@ -9,8 +9,6 @@ var http = require('http');
 var path = require('path');
 var mongoose = require('mongoose');
 
-global.db = mongoose.connect('mongodb://localhost/blog');
-
 var app = express();
 
 // all environments
