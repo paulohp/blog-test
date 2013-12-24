@@ -5,8 +5,12 @@ module.exports = function (app) {
 
 	var HomeController = {
 		index : function (req, res) {
-			Post.find();
-			res.render('home/index');
+			var params = {};
+			Post.find({}, function(err, posts){
+				params = {posts : posts};
+				console.log(params);
+				res.render('home/index', params);
+			});
 		},
 		entrar : function (req, res) {
 			res.render('home/entrar');
@@ -15,6 +19,7 @@ module.exports = function (app) {
 			res.render('home/cadastrar');
 		},
 		login : function (req, res) {
+			console.log("Cheguei Aqui")
 			var query = { email : req.body.user.email };
 			User.findOne(query)
 				.select('email password')

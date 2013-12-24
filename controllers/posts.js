@@ -1,22 +1,31 @@
 module.exports = function (app) {
+	var Post = app.models.posts;
 	var PostController = {
-		index: function () {
-			
+		index: function (req, res) {
+			var params = {};
+			Post.find({}, function(err, posts){
+				params = {posts : posts};
+				console.log(params);
+				res.render('posts/index', params);
+			});
 		},
-		show: function () {
+		show: function (req, res) {
 
 		},
-		create: function () {
+		postar: function (req, res) {
+			res.render('posts/postar')
+		},
+		create: function (req, res) {
 
 		},
-		edit: function () {
+		edit: function (req, res) {
 
 		},
-		update: function () {
+		update: function (req, res) {
 
 		},
-		destroy: function () {
-			
+		destroy: function (req, res) {
+
 		}
 	}
 

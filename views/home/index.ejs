@@ -3,29 +3,15 @@
 	<div class="jumbotron">
 		<h1>Blog de Teste</h1>
 		<p class="lead">Este blog é apenas um teste, foi desenvolvido usando Node.JS, MongoDB, EJS, Twtitter Bootstrap.</p>
-		<p><a class="btn btn-lg btn-success" href="#" role="button">Começar a postar</a></p>
+		<p><a class="btn btn-lg btn-success" href="/postar" role="button">Começar a postar</a></p>
 	</div>
 
 	<div class="row marketing">
         <div class="col-lg-12">
-
-			<h4>Subheading</h4>
-			<p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-			<h4>Subheading</h4>
-			<p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-			<h4>Subheading</h4>
-			<p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-
-			<h4>Subheading</h4>
-			<p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-			<h4>Subheading</h4>
-			<p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-			<h4>Subheading</h4>
-			<p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+        	<% posts.forEach(function(post, index) { %>
+				<h4><%- post.title %></h4>
+				<p><%- post.body %></p>
+			<% }) %>
         </div>
       </div>
 
