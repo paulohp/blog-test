@@ -6,5 +6,5 @@ module.exports = function () {
 	};
 
 	var url = env_url[process.env.NODE_ENV || "development"];
-	return mongoose.connect(url);
+	return mongoose.createConnection(url);
 }

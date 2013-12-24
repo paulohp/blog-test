@@ -12,7 +12,7 @@ module.exports = function (app) {
 			body: { type : String, default : '' },
 			createdAt: { type : Date, default : Date.now }
 		}],
-		tags: {type: [], get: getTags, set: setTags},
+		//tags: {type: [], get: getTags, set: setTags},
 		createdAt  : {type : Date, default : Date.now},
 		updateAt  : {type : Date, default : Date.now}
 	});
