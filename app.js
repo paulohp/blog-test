@@ -7,6 +7,9 @@ var express = require('express');
 var load = require('express-load');
 var http = require('http');
 var path = require('path');
+var mongoose = require('mongoose');
+
+global.db = mongoose.connect('mongodb://localhost/blog');
 
 var app = express();
 
@@ -18,7 +21,7 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
-app.use(express.cookieParser('your secret here'));
+app.use(express.cookieParser('blogtest'));
 app.use(express.session());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
