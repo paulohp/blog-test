@@ -10,15 +10,20 @@ module.exports = function (app) {
 			});
 		},
 		show: function (req, res) {
+			var params = {};
 			Post.findOne({_id : req.params.id}, function(err, post){
-				var params = {};
-				console.log(post);
-				if (err) {
-					console.log(err);
-				}else{
-					params = {post : post}
-					res.render('posts/show', params);
-				};
+				User.findOne(post.user, function(err, user){
+					console.log(post);
+					if (err) {
+						console.log(err);
+					}else{
+						params = {
+							user : user,
+							post : post
+						}
+						res.render('posts/show', params);
+					};
+				})
 			})
 		},
 		postar: function (req, res) {
