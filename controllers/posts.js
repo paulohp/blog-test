@@ -21,19 +21,17 @@ module.exports = function (app) {
 			res.render('posts/postar')
 		},
 		create: function (req, res) {
-			var post = new Post(req.body);
-			post.user = req.user;
-
-			post.save(function (err) {
+			var query = req.body.post;
+			console.log(query);
+			Post.create(query, function (err, post) {
 				if (err) {
-					res.render('posts/postar', {
-						post: post,
-						errors: err.errors
-					})
+					res.redirect('/postar');
+					console.log("Not Passou")
 				} else {
-					res.redirect('/posts/'+post._id)
-				}
-			})
+					console.log("Ya Passou")
+					res.redirect('/posts');
+				};
+			});
 		},
 		edit: function (req, res) {
 
