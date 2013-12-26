@@ -11,6 +11,7 @@
         	<% posts.forEach(function(post, index) { %>
 				<h4><%- post.title %></h4>
 				<p><%- post.body %></p>
+				<a href="/post/<%-post._id%>">ver mais</a>
 			<% }) %>
         </div>
       </div>
