@@ -1,5 +1,6 @@
 module.exports = function (app) {
 	var Post = app.models.posts;
+	var User = app.models.users;
 	var PostController = {
 		index: function (req, res) {
 			var params = {};
@@ -10,13 +11,29 @@ module.exports = function (app) {
 			});
 		},
 		show: function (req, res) {
-
+			res.render('posts/show', {
+				title: req.post.title,
+				post: req.post,
+				user: req.user,
+			})
 		},
 		postar: function (req, res) {
 			res.render('posts/postar')
 		},
 		create: function (req, res) {
+			var post = new Post(req.body);
+			post.user = req.user;
 
+			post.save(function (err) {
+				if (err) {
+					res.render('posts/postar', {
+						post: post,
+						errors: err.errors
+					})
+				} else {
+					res.redirect('/posts/'+post._id)
+				}
+			})
 		},
 		edit: function (req, res) {
 
