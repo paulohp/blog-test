@@ -6,15 +6,19 @@ module.exports = function (app) {
 			var params = {};
 			Post.find({}, function(err, posts){
 				params = {posts : posts};
-				console.log(params);
 				res.render('posts/index', params);
 			});
 		},
 		show: function (req, res) {
-			res.render('posts/show', {
-				title: req.post.title,
-				post: req.post,
-				user: req.user,
+			Post.findOne({_id : req.params.id}, function(err, post){
+				var params = {};
+				console.log(post);
+				if (err) {
+					console.log(err);
+				}else{
+					params = {post : post}
+					res.render('posts/show', params);
+				};
 			})
 		},
 		postar: function (req, res) {
@@ -22,11 +26,11 @@ module.exports = function (app) {
 		},
 		create: function (req, res) {
 			var query = req.body.post;
-			console.log(query);
+			query.user = req.session.user._id;
 			Post.create(query, function (err, post) {
 				if (err) {
 					res.redirect('/postar');
-					console.log("Not Passou")
+					console.log("Not Passou: ", err)
 				} else {
 					console.log("Ya Passou")
 					res.redirect('/posts');

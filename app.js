@@ -8,6 +8,7 @@ var load = require('express-load');
 var http = require('http');
 var path = require('path');
 var mongoose = require('mongoose');
+var mongoStore = require('connect-mongo')(express)
 
 var app = express();
 
@@ -18,7 +19,13 @@ app.set('view engine', 'ejs');
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.cookieParser('blogtest'));
-app.use(express.session());
+app.use(express.session({
+	secret: "blogtest",
+	store: new mongoStore({
+		url: "mongodb://localhost/blog",
+		collection : 'sessions'
+	})
+}))
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
