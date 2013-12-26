@@ -35,6 +35,7 @@ module.exports = function (app) {
 		},
 		signup : function (req, res) {
 			var query = req.body.user;
+			console.log(query);
 			User.create(query, function (err, user) {
 				if (err) {
 					res.redirect('/');
