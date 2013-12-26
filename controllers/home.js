@@ -22,7 +22,7 @@ module.exports = function (app) {
 			console.log("Cheguei Aqui")
 			var query = { email : req.body.user.email };
 			User.findOne(query)
-				.select('email password')
+				.select('name email password')
 				.exec(function(err, user){
 					if (user) {
 						req.session.user = user;
@@ -39,7 +39,7 @@ module.exports = function (app) {
 			User.create(query, function (err, user) {
 				if (err) {
 					res.redirect('/');
-					console.log("Not Passou")
+					console.log(err, "Not Passou")
 				} else {
 					console.log("Ya Passou")
 					req.session.user = user;
