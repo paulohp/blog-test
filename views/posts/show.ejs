@@ -2,6 +2,11 @@
 
 	<h1><%- post.title %></h1>
 	<span><%- post.body %></span>
+	<% if (post.tags){ %>
+		<% post.tags.split(',').forEach(function(tag) { %>
+			<span class="label label-info"><%- tag %></span>
+		<% }) %>
+	<% } %>
 	<div class="row">
 		<small> <%- user.email %></small>
 	</div>

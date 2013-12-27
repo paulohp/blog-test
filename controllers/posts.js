@@ -22,6 +22,7 @@ module.exports = function (app) {
 							post : post,
 							user : user
 						};
+						console.log("PARAMS", params)
 						res.render('posts/show', params);
 					};
 				})
