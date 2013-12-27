@@ -1,2 +1,4 @@
 --require should
 --report spec
+--ui bdd 
+--growl
