@@ -21,6 +21,16 @@ describe('In Post Controller', function () {
 			   		done();
 			   });
 	});
+
+	it('deve ir para rota / ao fazer POST /signup', function (done) {
+		var signup = { user: { name: "Usuário Teste", email: 'teste@teste.com', password: 'teste123' } };
+		request.post('/signup')
+				.send(signup)
+				.end(function(err, res){
+					res.headers.location.should.eql('/posts');
+					done();
+				});
+	});
 });
 after(function (done) {
 	require('./helpers').clearDb(done)

@@ -1,4 +1,4 @@
 --require should
---report spec
+--reporter spec
 --ui bdd 
 --growl
