@@ -9,9 +9,14 @@
 	<div class="row marketing">
         <div class="col-lg-12">
         	<% posts.forEach(function(post, index) { %>
-				<h4><%- post.title %></h4>
-				<p><%- post.body %></p>
-				<a href="/post/<%-post._id%>">ver mais</a>
+        		<article>
+					<h4><%- post.title %></h4>
+					<p><%- post.body %></p><br>
+					<a href="/post/<%-post._id%>">ver mais</a>
+				</article>
+				<div class="row">
+					<hr />
+				</div>
 			<% }) %>
         </div>
       </div>

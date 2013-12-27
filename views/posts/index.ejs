@@ -6,6 +6,10 @@
         	<% posts.forEach(function(post, index) { %>
 				<h4><%- post.title %></h4>
 				<p><%- post.body %></p>
+				<div class="row">
+					<small> <%- post.created_at %></small>
+				</div>
+				<hr />
 			<% }) %>
         </div>
       </div>

@@ -6,7 +6,7 @@ module.exports = function (app) {
 	var PostSchema = new Schema({
 		title: {type : String, default : '', trim : true},
 		body: {type : String, default : '', trim : true},
-		user: {type : Schema.ObjectId, ref : 'User'},
+		user: {type : Schema.ObjectId, ref : 'users'},
 		comments: [{
 			email: {type : String, default : '', trim : true},
 			body: { type : String, default : '' },

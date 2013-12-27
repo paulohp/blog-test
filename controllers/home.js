@@ -6,7 +6,7 @@ module.exports = function (app) {
 	var HomeController = {
 		index : function (req, res) {
 			var params = {};
-			Post.find({}, function(err, posts){
+			Post.find({}).sort({'updateAt': -1}).exec(function(err, posts){
 				params = {posts : posts};
 				console.log(params);
 				res.render('home/index', params);
