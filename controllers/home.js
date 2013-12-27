@@ -8,7 +8,6 @@ module.exports = function (app) {
 			var params = {};
 			Post.find({}).sort({'updateAt': -1}).exec(function(err, posts){
 				params = {posts : posts};
-				console.log(params);
 				res.render('home/index', params);
 			});
 		},
@@ -19,7 +18,6 @@ module.exports = function (app) {
 			res.render('home/cadastrar');
 		},
 		login : function (req, res) {
-			console.log("Cheguei Aqui")
 			var query = { email : req.body.user.email };
 			User.findOne(query)
 				.select('name email password')
@@ -28,22 +26,18 @@ module.exports = function (app) {
 						req.session.user = user;
 						res.redirect('/')
 					} else{
-						console.error("Error", err);
 						res.redirect('/entrar')
 					};
 				});
 		},
 		signup : function (req, res) {
 			var query = req.body.user;
-			console.log(query);
 			User.create(query, function (err, user) {
 				if (err) {
-					res.redirect('/');
-					console.log(err, "Not Passou")
+					res.redirect('/cadastrar');
 				} else {
-					console.log("Ya Passou")
 					req.session.user = user;
-					res.redirect('/');
+					res.redirect('/posts');
 				};
 			});
 		},

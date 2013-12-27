@@ -15,7 +15,7 @@ describe('In Home Controller', function () {
 		request.post('/signup')
 				.send(signup)
 				.end(function(err, res){
-					res.headers.location.should.eql('/');
+					res.headers.location.should.eql('/posts');
 					done();
 				});
 	});
@@ -26,6 +26,16 @@ describe('In Home Controller', function () {
 			   		res.headers.location.should.eql('/');
 			   		done();
 			   });
+	});
+
+	it('deve ir para rota /cadastrar ao fazer POST /signup', function (done) {
+		var signup = { user: { name: "Usuário Teste 2", email: '', password: '' } };
+		request.post('/signup')
+				.send(signup)
+				.end(function(err, res){
+					res.headers.location.should.eql('/cadastrar');
+					done();
+				});
 	});
 
 	it('deve ir para rota / ao fazer POST /login', function (done) {
@@ -48,3 +58,6 @@ describe('In Home Controller', function () {
 			   });
 	});
 });
+after(function (done) {
+	require('./helpers').clearDb(done)
+})

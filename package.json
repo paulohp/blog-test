@@ -11,6 +11,7 @@
 		"express-load" : "1.1.7",
 		"ejs" : "*",
 		"mongoose" : "*",
+		"async": "0.2.9",
 		"connect-mongo" : "0.3.2"
 	},
 	"devDependencies": {

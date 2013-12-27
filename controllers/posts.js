@@ -15,7 +15,6 @@ module.exports = function (app) {
 			var params = {};
 			Post.findOne({_id : req.params.id}, function(err, post){
 				User.findOne({_id : post.user}, function(err, user){
-					console.log(post);
 					if (err) {
 						console.log(err);
 					}else{
@@ -37,9 +36,7 @@ module.exports = function (app) {
 			Post.create(query, function (err, post) {
 				if (err) {
 					res.redirect('/postar');
-					console.log("Not Passou: ", err)
 				} else {
-					console.log("Ya Passou")
 					res.redirect('/posts');
 				};
 			});
