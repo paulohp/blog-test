@@ -22,12 +22,21 @@ describe('In Post Controller', function () {
 			   });
 	});
 
-	it('deve ir para rota / ao fazer POST /signup', function (done) {
-		var signup = { user: { name: "Usuário Teste", email: 'teste@teste.com', password: 'teste123' } };
-		request.post('/signup')
-				.send(signup)
+	it('deve ir para rota /entrar ao fazer GET /postar sem login', function (done) {
+		request.get('/postar')
 				.end(function(err, res){
-					res.headers.location.should.eql('/posts');
+					res.headers.location.should.eql('/entrar');
+					done();
+				});
+	});
+
+	it('deve ir para rota /post/:id ao fazer POST /create', function (done) {
+		var post = { post: {_id:123, title: "Post De Teste", body: 'Teste Teste Teste Teste', tags: 'teste1, teste2, teste3' } };
+		request.post('/create')
+				.send(post)
+				.end(function(err, res){
+					if (err) throw err
+					res.headers.location.should.eql('/post/');
 					done();
 				});
 	});
