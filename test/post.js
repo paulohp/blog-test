@@ -30,13 +30,13 @@ describe('In Post Controller', function () {
 				});
 	});
 
-	it('deve ir para rota /post/:id ao fazer POST /create', function (done) {
+	it('deve ir para rota /post/:id ao fazer POST /create com login', function (done) {
 		var post = { post: {_id:123, title: "Post De Teste", body: 'Teste Teste Teste Teste', tags: 'teste1, teste2, teste3' } };
-		request.post('/create')
+		request.post('/post')
 				.send(post)
 				.end(function(err, res){
 					if (err) throw err
-					res.headers.location.should.eql('/post/');
+					res.headers.location.should.eql('/post/'+post.post._id);
 					done();
 				});
 	});
