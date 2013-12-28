@@ -23,6 +23,5 @@ module.exports = function (app) {
 		updateAt  : { type : Date, default : Date.now }
 	});
 
-
 	return db.model('posts', PostSchema);
 }
