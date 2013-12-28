@@ -10,17 +10,17 @@ module.exports = function (app) {
 	}
 	
 	var PostSchema = new Schema({
-		title: {type : String, default : '', trim : true},
-		body: {type : String, default : '', trim : true},
-		user: {type : Schema.ObjectId, ref : 'users'},
+		title: { type : String },
+		body: { type : String },
+		user: { type : Schema.ObjectId, ref : 'users' },
 		comments: [{
-			email: {type : String, default : '', trim : true},
-			body: { type : String, default : '' },
+			email: { type : String },
+			body: { type : String },
 			createdAt: { type : Date, default : Date.now }
 		}],
-		tags: {type: [], get: getTags, set: setTags},
-		createdAt  : {type : Date, default : Date.now},
-		updateAt  : {type : Date, default : Date.now}
+		tags: {type: [], get: getTags, set: setTags },
+		createdAt  : { type : Date, default : Date.now },
+		updateAt  : { type : Date, default : Date.now }
 	});
 
 
