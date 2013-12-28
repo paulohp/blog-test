@@ -1,15 +1,30 @@
 <% include ../header %>
-
-	<h1><%- post.title %></h1>
-	<span><%- post.body %></span>
-	<% if (post.tags){ %>
-		<% post.tags.split(',').forEach(function(tag) { %>
-			<span class="label label-info"><%- tag %></span>
-		<% }) %>
-	<% } %>
-	<div class="row">
-		<small> <%- user.email %></small>
-	</div>
+	<section class="post">
+		<header>
+			<h1><%- post.title %></h1>
+		</header>
+		<article>
+			<span><%- post.body %></span>
+		</article>
+		<footer>
+			<% if (post.tags){ %>
+				<div class="tags" >
+					<% post.tags.split(',').forEach(function(tag) { %>
+						<span class="label label-info"><%- tag %></span>
+					<% }) %>
+				</div>
+			<% } %>
+			<div class="infos">
+				<small>Autor: <%- user.email %></small>
+			</div>
+		</footer>
+	</section>
 	<hr />
+	<section class="comments">
+		<header>
+			<h3>Comentários</h3>
+		</header>
+	</section>
+
 
 <% include ../footer %>
