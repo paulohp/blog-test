@@ -16,20 +16,19 @@ module.exports = function (app) {
 			Post.findOne({_id : req.params.id}, function(err, post){
 				User.findOne({_id : post.user}, function(err, user){
 					if (err) {
-						console.log(err);
+						throw err;
 					}else{
 						params = {
 							post : post,
 							user : user
 						};
-						console.log("PARAMS", params)
 						res.render('posts/show', params);
 					};
 				})
 			})
 		},
 		postar: function (req, res) {
-			res.render('posts/postar')
+			res.render('posts/new')
 		},
 		create: function (req, res) {
 			var query = req.body.post;
@@ -43,7 +42,7 @@ module.exports = function (app) {
 			});
 		},
 		edit: function (req, res) {
-
+			res.render('posts/edit');
 		},
 		update: function (req, res) {
 

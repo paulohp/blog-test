@@ -3,5 +3,5 @@ module.exports = function( req, res, next ) {
 		req.session.logged_in = true;
 	};
 	res.locals.sess = req.session;
-	return next();
+	next();
 };

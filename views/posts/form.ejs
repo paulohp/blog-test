@@ -1,0 +1,23 @@
+<div class="row marketing">
+	<h3>Criar Post</h3>
+	<div class="col-lg-12">
+		<form action="/post" method="post">
+			<div class="control-group">
+				<label for="post[title]">Titulo</label>
+				<input type="text" class="form-control" name="post[title]" id="title" placeholder="Escreve um titulo">
+			</div>
+			<br>
+			<div class="control-group">
+				<label for="post[body]">Conteúdo</label>
+				<textarea class="form-control" name="post[body]" id="body"></textarea>
+			</div>
+			<br>
+			<div class="control-group">
+				<label for="post[tags]">Tags</label>
+				<input type="text" class="form-control" name="post[tags]" id="tags" placeholder="Tags">
+			</div>
+			<br>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Salvar</button>
+		</form>
+	</div>
+  </div>
