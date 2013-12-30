@@ -1,5 +1,6 @@
 module.exports = function (app) {
-
+	require('moment');
+	
 	var User = app.models.users;
 	var Post = app.models.posts;
 

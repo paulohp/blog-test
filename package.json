@@ -12,7 +12,8 @@
 		"ejs" : "*",
 		"mongoose" : "*",
 		"async": "0.2.9",
-		"connect-mongo" : "0.3.2"
+		"connect-mongo" : "0.3.2",
+		"moment" : "*"
 	},
 	"devDependencies": {
 		"mocha": "*",
