@@ -9,6 +9,9 @@ var http = require('http');
 var path = require('path');
 var mongoose = require('mongoose');
 var mongoStore = require('connect-mongo')(express)
+var moment = require('moment');
+moment.lang('pt_BR');
+var ejs = require('ejs');
 
 var app = express();
 
@@ -40,6 +43,10 @@ load('models')
 	.then('controllers')
 	.then('routes')
 	.into(app)
+
+ejs.filters.formatDate = function(date){
+  return moment(date).format('DD/MMM/YYYY');
+}
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
