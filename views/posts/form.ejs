@@ -4,7 +4,8 @@
 		<% if (post.isNew) {%>
 			<form action="/post" method="post">
 		<% } else{ %>
-			<form action="/post/<%-post._id%>" method="put">
+			<form action="/post/<%-post._id%>" method="post">
+			<input type="hidden" name="_method" value="PUT">
 		<% }%>
 
 			<div class="control-group">

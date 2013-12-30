@@ -2,7 +2,7 @@
 	<section class="post">
 		<header class="post-header">
 			<h1 class="pull-left"><%- post.title %></h1>
-			<% if (sess.user._id == post.user){ %>
+			<% if (sess.user && sess.user._id == post.user){ %>
 				<div class="actions pull-right">
 					<form action="/post/<%-post._id%>" method="post">
 						<a href="/post/<%-post._id%>/editar" class="btn btn-default">Editar</a>

@@ -46,19 +46,25 @@ module.exports = function (app) {
 			});
 		},
 		edit: function (req, res) {
-			Post.findOne({_id : req.params.id}, function(err, post){
+			Post.findOne({_id : req.params.id}, function (err, post){
 				res.render('posts/edit', {
 					title: "Editar",
-					post:{
-						title: post.title,
-						body: post.body,
-						tags: post.tags
-					}
+					post: post
 				});
 			})
 		},
 		update: function (req, res) {
-
+			var id = req.params.id;
+			var epost = req.body.post;
+			
+			Post.findOne({_id: id}, function (err, post){
+				post.title = epost.title;
+				post.body = epost.body;
+				post.tags = epost.tags;
+				post.save(function (err){
+					res.redirect('/posts');
+				});
+			});
 		},
 		destroy: function (req, res) {
 			var id = req.params.id;
