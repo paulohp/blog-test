@@ -1,8 +1,8 @@
 module.exports = function (app) {
 	var posts = app.controllers.posts;
 	var comments = app.controllers.comments;
-	var authentication = require('./../middleware/authentication');
-	var logged = require('./../middleware/logged');
+	var authentication = require('../middleware/authentication');
+	var logged = require('../middleware/logged');
 
 	app.get('/posts', logged, posts.index);
 	app.get('/post/:id', logged, posts.show);

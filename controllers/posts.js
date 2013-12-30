@@ -61,7 +61,10 @@ module.exports = function (app) {
 				post.title = epost.title;
 				post.body = epost.body;
 				post.tags = epost.tags;
+				post.updateAt = Date.now();
+				
 				post.save(function (err){
+					if (err) throw err;
 					res.redirect('/posts');
 				});
 			});
