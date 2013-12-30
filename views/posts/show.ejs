@@ -4,8 +4,11 @@
 			<h1 class="pull-left"><%- post.title %></h1>
 			<% if (sess.user._id == post.user){ %>
 				<div class="actions pull-right">
-					<button class="btn">Editar</button>
-					<button class="btn btn-danger">Apagar</button>
+					<form action="/post/<%-post._id%>" method="post">
+						<a href="/post/<%-post._id%>/editar" class="btn btn-default">Editar</a>
+						<input type="hidden" name="_method" value="DELETE">
+						<button type="submit" class="btn btn-danger">Apagar</button>
+					</form>
 				</div>
 			<% } %>
 		</header>

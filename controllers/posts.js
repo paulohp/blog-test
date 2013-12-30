@@ -28,7 +28,11 @@ module.exports = function (app) {
 			})
 		},
 		postar: function (req, res) {
-			res.render('posts/new')
+			res.render('posts/new', {
+				title : "Novo Post",
+				post : new Post({}),
+				tags : ''
+			});
 		},
 		create: function (req, res) {
 			var query = req.body.post;
@@ -37,18 +41,32 @@ module.exports = function (app) {
 				if (err) {
 					res.redirect('/postar');
 				} else {
-					res.redirect('/posts');
+					res.redirect('/post/'+post._id);
 				};
 			});
 		},
 		edit: function (req, res) {
-			res.render('posts/edit');
+			Post.findOne({_id : req.params.id}, function(err, post){
+				res.render('posts/edit', {
+					title: "Editar",
+					post:{
+						title: post.title,
+						body: post.body,
+						tags: post.tags
+					}
+				});
+			})
 		},
 		update: function (req, res) {
 
 		},
 		destroy: function (req, res) {
-
+			var id = req.params.id;
+			console.log(id);
+			Post.remove({_id : id}, function (err) {
+				if (err) throw err;
+				res.redirect('/posts');
+			})
 		}
 	}
 
