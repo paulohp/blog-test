@@ -26,6 +26,7 @@ body {
 
 /* Custom page footer */
 .footer {
+  margin-top: 19px;
   padding-top: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;
@@ -34,7 +35,7 @@ body {
 /* Customize container */
 @media (min-width: 768px) {
   .container {
-    max-width: 730px;
+	max-width: 730px;
   }
 }
 .container-narrow > hr {
@@ -79,8 +80,8 @@ body {
   height: auto;
   padding: 10px;
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+	 -moz-box-sizing: border-box;
+		  box-sizing: border-box;
 }
 .form-signin .form-control:focus {
   z-index: 2;
@@ -102,7 +103,17 @@ body {
   border-top-right-radius: 0;
 }
 
-
+/* Search form */
+.search input{
+  width: 650px;
+  display: inline;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+.search button{
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
 /* Posts page */
 .post-header{
   width: 100%;
@@ -140,15 +151,15 @@ div.tagsinput div { display:block; float: left; }
   .header,
   .marketing,
   .footer {
-    padding-left: 0;
-    padding-right: 0;
+	padding-left: 0;
+	padding-right: 0;
   }
   /* Space out the masthead */
   .header {
-    margin-bottom: 30px;
+	margin-bottom: 30px;
   }
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
-    border-bottom: 0;
+	border-bottom: 0;
   }
 }
