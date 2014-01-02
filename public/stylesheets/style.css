@@ -104,8 +104,11 @@ body {
 }
 
 /* Search form */
+.search{
+  margin-bottom: 20px;
+}
 .search input{
-  width: 650px;
+  width: 620px;
   display: inline;
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;

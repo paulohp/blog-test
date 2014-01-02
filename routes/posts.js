@@ -12,4 +12,5 @@ module.exports = function (app) {
 	app.get('/post/:id/editar', authentication, logged, posts.edit);
 	app.put('/post/:id', authentication, logged, posts.update);
 	app.del('/post/:id', authentication, logged, posts.destroy);
+	app.get('/search', logged, posts.search);
 }

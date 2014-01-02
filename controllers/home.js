@@ -6,7 +6,11 @@ module.exports = function (app) {
 		index : function (req, res) {
 			var params = {};
 			Post.find({}).sort({'updateAt': -1}).exec(function(err, posts){
-				params = {posts : posts};
+				params = {
+					posts : posts,
+					tags : posts.tags
+				};
+				console.log()
 				res.render('home/index', params);
 			});
 		},
