@@ -84,7 +84,7 @@ module.exports = function (app) {
 			var terms = {title: { $regex: req.query.search, $options: 'i' }}
 			console.log(terms);
 			Post.find(terms, function(err, posts){
-				params = {posts : posts};
+				params = { posts : posts };
 				console.log(params)
 				res.render('posts/index', params);
 			});
