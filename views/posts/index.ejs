@@ -18,7 +18,7 @@
 								<% if (post.tags){ %>
 									<strong>Tags:</strong>
 									<% post.tags.split(',').forEach(function(tag) { %>
-										<span class="label label-info"><%- tag %></span>
+										<a href="/tags/<%-tag%>"><span class="label label-info"><%- tag %></span></a>
 									<% }) %>
 								<% } %>
 							</p>
