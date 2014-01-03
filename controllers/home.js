@@ -22,10 +22,11 @@ module.exports = function (app) {
 		},
 		login : function (req, res) {
 			var query = { email : req.body.user.email };
+			var password = req.body.user.password;
 			User.findOne(query)
 				.select('name email password')
 				.exec(function(err, user){
-					if (user) {
+					if (user && user.password == password) {
 						req.session.user = user;
 						res.redirect('/')
 					} else{

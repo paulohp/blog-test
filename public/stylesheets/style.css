@@ -117,8 +117,9 @@ body {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
+/* Users page */
 /* Posts page */
-.post-header{
+.post-header, .user-header{
   width: 100%;
   display: table;
 } 
