@@ -26,9 +26,13 @@ module.exports = function (app) {
 			User.findOne(query)
 				.select('name email password')
 				.exec(function(err, user){
-					if (user && user.password == password) {
-						req.session.user = user;
-						res.redirect('/')
+					if (user) {
+						if (crypter.validate(user.password, password)) {
+							req.session.user = user;
+							res.redirect('/')
+						}else{
+							res.redirect('/entrar')
+						}
 					} else{
 						res.redirect('/entrar')
 					};
@@ -36,6 +40,7 @@ module.exports = function (app) {
 		},
 		signup : function (req, res) {
 			var query = req.body.user;
+			query.password = crypter.hash(query.password);
 			User.create(query, function (err, user) {
 				if (err) {
 					res.redirect('/cadastrar');

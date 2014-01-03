@@ -12,7 +12,7 @@ module.exports = function (app) {
 		},
 		update: function (req, res) {
 			var id = req.params.id;
-			var password = req.body.user.password;
+			var password = crypter.hash(req.body.user.password);
 			
 			User.findOne({_id: id}, function (err, user){
 				user.password = password;

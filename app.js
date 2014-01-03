@@ -10,10 +10,9 @@ var path = require('path');
 var mongoose = require('mongoose');
 var mongoStore = require('connect-mongo')(express)
 var moment = require('moment');
-moment.lang('pt_BR');
 var ejs = require('ejs');
-
 var app = express();
+crypter = require('./middleware/password_hash.js')
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -33,6 +32,7 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(crypter);
 
 // development only
 if ('development' == app.get('env')) {
@@ -44,6 +44,8 @@ load('models')
 	.then('routes')
 	.into(app)
 
+//Date Format
+moment.lang('pt_BR');
 ejs.filters.formatDate = function(date){
   return moment(date).format('DD/MMM/YYYY');
 }
