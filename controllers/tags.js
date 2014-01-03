@@ -15,7 +15,7 @@ module.exports = function (app) {
 			});
 		},
 		list: function (req, res, next) {
-			Post.find({}).exec(function(err, posts){
+			Post.find({}).select('tags').exec(function(err, posts){
 				var tags = [];
 				_.each(posts, function(post, index){
 					tags.push(post.tags);
