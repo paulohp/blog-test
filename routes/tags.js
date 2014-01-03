@@ -3,5 +3,6 @@ module.exports = function (app) {
 	var tags = app.controllers.tags;
 	var logged = require('../middleware/logged');
 
+	
 	app.get('/tags/:tag', logged, tags.filter)
 }

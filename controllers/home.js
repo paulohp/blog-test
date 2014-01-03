@@ -8,17 +8,21 @@ module.exports = function (app) {
 			Post.find({}).sort({'updateAt': -1}).exec(function(err, posts){
 				params = {
 					posts : posts,
-					tags : posts.tags
+					tags : req.tags
 				};
 				console.log()
 				res.render('home/index', params);
 			});
 		},
 		entrar : function (req, res) {
-			res.render('home/entrar');
+			res.render('home/entrar', {
+				tags : req.tags
+			});
 		},
 		cadastrar : function (req, res) {
-			res.render('home/cadastrar');
+			res.render('home/cadastrar', {
+				tags : req.tags
+			});
 		},
 		login : function (req, res) {
 			var query = { email : req.body.user.email };

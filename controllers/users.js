@@ -6,7 +6,8 @@ module.exports = function (app) {
 			User.findOne({_id : req.params.id}, function (err, user){
 				res.render('users/edit', {
 					title: "Editar",
-					user: user
+					user: user,
+					tags : req.tags
 				});
 			})
 		},
@@ -30,7 +31,8 @@ module.exports = function (app) {
 					throw err;
 				}else{
 					params = {
-						user : user
+						user : user,
+						tags : req.tags
 					};
 					res.render('users/show', params);
 				};

@@ -7,7 +7,10 @@ module.exports = function (app) {
 		index: function (req, res) {
 			var params = {};
 			Post.find({}, function(err, posts){
-				params = {posts : posts};
+				params = {
+					posts : posts,
+					tags : req.tags
+				};
 				res.render('posts/index', params);
 			});
 		},
@@ -20,7 +23,8 @@ module.exports = function (app) {
 					}else{
 						params = {
 							post : post,
-							user : user
+							user : user,
+							tags : req.tags
 						};
 						res.render('posts/show', params);
 					};
@@ -49,7 +53,8 @@ module.exports = function (app) {
 			Post.findOne({_id : req.params.id}, function (err, post){
 				res.render('posts/edit', {
 					title: "Editar",
-					post: post
+					post: post,
+					tags : req.tags
 				});
 			})
 		},
@@ -84,7 +89,10 @@ module.exports = function (app) {
 			var terms = {title: { $regex: req.query.search, $options: 'i' }}
 			console.log(terms);
 			Post.find(terms, function(err, posts){
-				params = { posts : posts };
+				params = { 
+					posts : posts,
+					tags : req.tags
+				};
 				console.log(params)
 				res.render('posts/index', params);
 			});

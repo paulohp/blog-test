@@ -1,7 +1,9 @@
 module.exports = function(app) {
 	var home = app.controllers.home;
+	var tags = app.controllers.tags;
 	var authentication = require('../middleware/authentication');
 	var logged = require('../middleware/logged');
+	app.get('*', tags.list);
 
 	app.get('/', logged, home.index);
 	app.post('/login', logged, home.login);
