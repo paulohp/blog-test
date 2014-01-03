@@ -23,6 +23,7 @@ describe('In Post Controller', function () {
 			   });
 	});
 
+	//Testando rota /postar com login e sem login
 	describe('GET /postar', function () {
 		describe('Sem Login', function () {
 			it('deve ir para rota /entrar ao fazer GET /postar sem login', function (done) {
@@ -56,29 +57,48 @@ describe('In Post Controller', function () {
 		})
 	})
 
+	//Testando rota /postar com login e sem login
+	describe('POST /post', function(){
+		describe('Sem Login', function () {
+			it('deve ir para rota /entrar', function (done) {
+				var post = {};
+				request.post('/post')
+					.send(post)
+					.end(function(err, res){
+						if (err) throw err
+						res.headers.location.should.eql('/entrar');
+						done();
+					});
+			});
+		});
 
-	/*it('deve ir para rota /post/:id ao fazer POST /post com login', function (done) {
-		var post = { post: {_id:123, title: "Post De Teste", body: 'Teste Teste Teste Teste', tags: 'teste1, teste2, teste3' } };
-		before(function (done) {
-			// login the user
-			request
-				.post('/login')
-				.field('email', 'teste02@teste.com')
-				.field('password', 'teste02')
-				.end(function (err, res) {
-				// store the cookie
-				cookies = res.headers['set-cookie'].pop().split(';')[0];
-				done()
+		describe('Com Login', function () {
+			var login = { 
+				user: { 
+					email: 'teste02@teste.com', 
+					password: 'teste02' 
+				} 
+			};
+
+			before(function (done) {
+				request.post('/login')
+					.send(login)
+					.end(function (err, res) {
+						cookies = res.headers['set-cookie'].pop().split(';')[0];
+						done()
+					})
 			})
-			request.post('/post')
-				.send(post)
-				.end(function(err, res){
-					if (err) throw err
-					res.headers.location.should.eql('/post/'+post.post._id);
-					done();
-				});
-		})
-	});*/
+			it('deve ir para rota /post/:id', function (done) {
+				var post = { post: {title: "Post De Teste", body: 'Teste Teste Teste Teste', tags: 'teste1, teste2, teste3' } };
+				var req = request.post('/post').send(post)
+				req.cookies = cookies
+        		req.expect('Content-Type', /html/)
+					.expect(302)
+					.expect(/Post De Teste/)
+					.end(done)
+			});
+		});
+	})
 });
 after(function (done) {
 	require('./helpers').clearDb(done)
