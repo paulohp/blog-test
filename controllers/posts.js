@@ -6,7 +6,7 @@ module.exports = function (app) {
 	var PostController = {
 		index : function (req, res) {
 			var params = {};
-			Post.find({}).sort({'updateAt': -1}).populate('users', ' email').exec(function(err, posts){
+			Post.find({}).sort({'updateAt': -1}).exec(function(err, posts){
 				params = {
 					posts : posts,
 					tags : req.tags
