@@ -12,6 +12,7 @@ var mongoStore = require('connect-mongo')(express)
 var moment = require('moment');
 var ejs = require('ejs');
 var app = express();
+var flash = require('express-flash')
 crypter = require('./middleware/password_hash.js')
 
 // all environments
@@ -33,6 +34,7 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(crypter);
+app.use(flash());
 
 // development only
 if ('development' == app.get('env')) {

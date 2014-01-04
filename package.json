@@ -14,7 +14,8 @@
 		"async": "0.2.9",
 		"connect-mongo" : "0.3.2",
 		"moment" : "*",
-		"underscore" : "*"
+		"underscore" : "*",
+		"express-flash" : "*"
 	},
 	"devDependencies": {
 		"mocha": "*",
