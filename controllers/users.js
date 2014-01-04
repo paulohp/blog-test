@@ -39,12 +39,12 @@ module.exports = function (app) {
 			})
 		},
 		entrar : function (req, res) {
-			res.render('home/entrar', {
+			res.render('users/entrar', {
 				tags : req.tags
 			});
 		},
 		cadastrar : function (req, res) {
-			res.render('home/cadastrar', {
+			res.render('users/cadastrar', {
 				tags : req.tags
 			});
 		},
