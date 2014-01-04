@@ -57,12 +57,12 @@
 				<form action="/post/<%-post._id%>/comment" method="post">
 					<div class="control-group">
 						<label for="comment[email]">E-Mail</label>
-						<input name="comment[email]" class="form-control" type="text">
+						<input name="comment[email]" class="form-control" type="email" required >
 					</div>
 					<br>
 					<div class="control-group">
 						<label for="comment[body]">Comentário</label>
-						<textarea class="form-control" name="comment[body]"></textarea>
+						<textarea class="form-control" name="comment[body]" required ></textarea>
 					</div>
 					<br>
 					<div class="control-group">

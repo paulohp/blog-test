@@ -10,12 +10,12 @@
 
 			<div class="control-group">
 				<label for="post[title]">Titulo</label>
-				<input type="text" value="<%-post.title%>" class="form-control" name="post[title]" id="title" placeholder="Escreve um titulo">
+				<input type="text" value="<%-post.title%>" class="form-control" name="post[title]" id="title" placeholder="Escreve um titulo" required >
 			</div>
 			<br>
 			<div class="control-group">
 				<label for="post[body]">Conteúdo</label>
-				<textarea class="form-control" value="<%-post.body%>" name="post[body]" id="body"><%-post.body%></textarea>
+				<textarea class="form-control" value="<%-post.body%>" name="post[body]" id="body" required><%-post.body%></textarea>
 			</div>
 			<br>
 			<div class="control-group">
