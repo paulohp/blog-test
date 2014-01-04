@@ -15,7 +15,7 @@ var app = express();
 crypter = require('./middleware/password_hash.js')
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 4200);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(express.favicon());
