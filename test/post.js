@@ -90,11 +90,11 @@ describe('In Post Controller', function () {
 			})
 			it('deve ir para rota /post/:id', function (done) {
 				var post = { post: {title: "Post De Teste", body: 'Teste Teste Teste Teste', tags: 'teste1, teste2, teste3' } };
-				var req = request.post('/post').send(post)
+				var req = request.post('/post')
 				req.cookies = cookies
-        		req.expect('Content-Type', /html/)
-					.expect(302)
-					.expect(/Post De Teste/)
+        		req.send(post)
+        			.expect('Content-Type', /plain/)
+					.expect('Location', /\/post\//)
 					.end(done)
 			});
 		});
