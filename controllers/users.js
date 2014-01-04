@@ -19,8 +19,13 @@ module.exports = function (app) {
 				user.password = password;
 				
 				user.save(function (err){
-					if (err) throw err;
-					res.redirect('/');
+					if (err) {
+						req.flash('error', 'Operação não realizada');
+						throw err
+					}else{
+						req.flash('success', 'Operação realizada com sucesso');
+						res.redirect('/user/'+user._id);
+					};
 				});
 			});
 		},
@@ -57,11 +62,14 @@ module.exports = function (app) {
 					if (user) {
 						if (crypter.validate(user.password, password)) {
 							req.session.user = user;
+							req.flash('success', 'Operação realizada com sucesso');
 							res.redirect('/')
 						}else{
+							req.flash('error', 'Senha incorreta');
 							res.redirect('/entrar')
 						}
 					} else{
+						req.flash('error', 'E-Mail incorreto');
 						res.redirect('/entrar')
 					};
 				});
@@ -73,6 +81,7 @@ module.exports = function (app) {
 				if (err) {
 					res.redirect('/cadastrar');
 				} else {
+					req.flash('success', 'Operação realizada com sucesso');
 					req.session.user = user;
 					res.redirect('/posts');
 				};

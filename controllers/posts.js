@@ -43,8 +43,10 @@ module.exports = function (app) {
 			query.user = req.session.user._id;
 			Post.create(query, function (err, post) {
 				if (err) {
+					req,flash('error', "Alguns erros foram encontrados");
 					res.redirect('/postar');
 				} else {
+					req.flash('success', "Operação realizada com sucesso");
 					res.redirect('/post/'+post._id);
 				};
 			});
@@ -69,8 +71,13 @@ module.exports = function (app) {
 				post.updateAt = Date.now();
 				
 				post.save(function (err){
-					if (err) throw err;
-					res.redirect('/posts');
+					if (err){ 
+						req.flash('error', "Alguns erros encontrados");
+						throw err;
+					}else{
+						req.flash('success', "Operação realizada com sucesso");
+						res.redirect('/post/'+post._id);
+					};
 				});
 			});
 		},
@@ -78,8 +85,13 @@ module.exports = function (app) {
 			var id = req.params.id;
 			console.log(id);
 			Post.remove({_id : id}, function (err) {
-				if (err) throw err;
-				res.redirect('/posts');
+				if (err){
+					throw err
+					req.flash('error', "Operação não realizada")
+				}else{
+					req.flash('success', "Operação realizada com sucesso");
+					res.redirect('/posts');
+				};
 			})
 		},
 

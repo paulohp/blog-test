@@ -1,5 +1,10 @@
 <% include ../header %>
 	<% include ../helpers/search_form %>
+	<% if (messages.success) { %>
+		<div class="alert alert-success">
+			<span><%- messages.success %></span>
+		</div>
+	<% } %>
 	<section class="post">
 		<header class="post-header">
 			<h1 class="pull-left"><%- post.title %></h1>

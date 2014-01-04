@@ -28,13 +28,13 @@ app.use(express.session({
 		url: "mongodb://localhost/blog",
 		collection : 'sessions'
 	})
-}))
+}));
+app.use(flash());
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(crypter);
-app.use(flash());
 
 // development only
 if ('development' == app.get('env')) {

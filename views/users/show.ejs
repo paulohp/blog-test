@@ -1,4 +1,9 @@
 <% include ../header %>
+	<% if (messages.success) { %>
+		<div class="alert alert-success">
+			<span><%- messages.success %></span>
+		</div>
+	<% } %>
 	<div class="row marketing">
 		<section class="user">
 			<header class="user-header">

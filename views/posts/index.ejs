@@ -1,6 +1,15 @@
 <% include ../header %>
-
 	<% include ../helpers/search_form %>
+	<% if (messages.success) { %>
+		<div class="alert alert-success">
+			<span><%- messages.success %></span>
+		</div>
+	<% } %>
+	<% if (messages.error) { %>
+		<div class="alert alert-danger">
+			<span><%- messages.error %></span>
+		</div>
+	<% } %>
 
 	<div class="jumbotron">
 		<h1>Blog de Teste</h1>
