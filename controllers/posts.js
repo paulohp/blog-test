@@ -4,9 +4,9 @@ module.exports = function (app) {
 	var User = app.models.users;
 
 	var PostController = {
-		index: function (req, res) {
+		index : function (req, res) {
 			var params = {};
-			Post.find({}, function(err, posts){
+			Post.find({}).sort({'updateAt': -1}).populate('users', ' email').exec(function(err, posts){
 				params = {
 					posts : posts,
 					tags : req.tags

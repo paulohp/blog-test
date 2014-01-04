@@ -18,7 +18,7 @@
 						<div class="row">
 							<div class="col-lg-12">
 								<p>
-									<strong>Autor:</strong> Teste |
+									<strong>Autor:</strong> <%- post.user.email %> |
 									<strong>Data: </strong><%=: post.createdAt | formatDate %> |
 									<strong><%- post.comments.length %> Comentários</strong> |
 									<% if (post.tags){ %>

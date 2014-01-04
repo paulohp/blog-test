@@ -1,9 +1,12 @@
 module.exports = function (app) {
 	var posts = app.controllers.posts;
 	var comments = app.controllers.comments;
+	var tags = app.controllers.tags;
 	var authentication = require('../middleware/authentication');
 	var logged = require('../middleware/logged');
+	app.get('*', tags.list);
 
+	app.get('/', logged, posts.index);
 	app.get('/posts', logged, posts.index);
 	app.get('/post/:id', logged, posts.show);
 	app.get('/postar', authentication, logged, posts.postar);

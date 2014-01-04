@@ -37,6 +37,50 @@ module.exports = function (app) {
 					res.render('users/show', params);
 				};
 			})
+		},
+		entrar : function (req, res) {
+			res.render('home/entrar', {
+				tags : req.tags
+			});
+		},
+		cadastrar : function (req, res) {
+			res.render('home/cadastrar', {
+				tags : req.tags
+			});
+		},
+		login : function (req, res) {
+			var query = { email : req.body.user.email };
+			var password = req.body.user.password;
+			User.findOne(query)
+				.select('name email password')
+				.exec(function(err, user){
+					if (user) {
+						if (crypter.validate(user.password, password)) {
+							req.session.user = user;
+							res.redirect('/')
+						}else{
+							res.redirect('/entrar')
+						}
+					} else{
+						res.redirect('/entrar')
+					};
+				});
+		},
+		signup : function (req, res) {
+			var query = req.body.user;
+			query.password = crypter.hash(query.password);
+			User.create(query, function (err, user) {
+				if (err) {
+					res.redirect('/cadastrar');
+				} else {
+					req.session.user = user;
+					res.redirect('/posts');
+				};
+			});
+		},
+		logout : function (req, res) {
+			req.session.destroy();
+			res.redirect('/');
 		}
 	};
 
