@@ -105,6 +105,7 @@ describe('In Post Controller', function () {
 						var req = request.post('/post/'+post._id+'/comment');
 						req.send(comment)
 							.expect(302)
+							.end(done)
 					})
 				});
 			});
