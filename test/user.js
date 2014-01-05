@@ -1,7 +1,7 @@
 var app = require('../app');
 var request = require('supertest')(app);
 
-describe('In Home Controller', function () {
+describe('In User Controller', function () {
 	it('deve retornar status 200 ao fazer GET /', function (done) {
 		request.get('/')
 			   .end(function(err, res){

@@ -89,13 +89,24 @@ describe('In Post Controller', function () {
 					})
 			})
 			it('deve ir para rota /post/:id', function (done) {
-				var post = { post: {title: "Post De Teste", body: 'Teste Teste Teste Teste', tags: 'teste1, teste2, teste3' } };
+				var post = { post: {title: "Post de Teste", body: 'Teste Teste Teste Teste', tags: 'teste1, teste2, teste3' } };
 				var req = request.post('/post')
 				req.cookies = cookies
         		req.send(post)
         			.expect('Content-Type', /plain/)
 					.expect('Location', /\/post\//)
 					.end(done)
+			});
+
+			describe('Comentários', function () {
+				it('deve fazer um comentário no post', function (done) {
+					var comment = { comment : {email: 'teste@teste.com', body: 'Teste de Comentário'}}
+					Post.findOne({title: "Post de Teste"}).exec(function (err, post){
+						var req = request.post('/post/'+post._id+'/comment');
+						req.send(comment)
+							.expect(302)
+					})
+				});
 			});
 		});
 	})
