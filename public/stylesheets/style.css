@@ -52,6 +52,9 @@ body {
   padding: 14px 24px;
 }
 
+/*btp wrapper*/
+.btn-small{padding:1px 3px!important;}
+
 /* Supporting marketing content */
 .marketing {
   margin: 40px 0;
@@ -101,6 +104,11 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+/* Comments */
+.comment-action{
+  display: table;
+  margin-bottom: 4px;
 }
 
 /* Search form */

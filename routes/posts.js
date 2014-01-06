@@ -11,9 +11,12 @@ module.exports = function (app) {
 	app.get('/post/:id', logged, posts.show);
 	app.get('/postar', authentication, logged, posts.postar);
 	app.post('/post', authentication, logged, posts.create);
-	app.post('/post/:id/comment', comments.create);
 	app.get('/post/:id/editar', authentication, logged, posts.edit);
 	app.put('/post/:id', authentication, logged, posts.update);
 	app.del('/post/:id', authentication, logged, posts.destroy);
+
 	app.get('/search', logged, posts.search);
+
+	app.post('/post/:id/comment', comments.create);
+	app.del('/post/:id/comment/:comment_id', comments.destroy);
 }

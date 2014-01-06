@@ -49,7 +49,15 @@
 		<article>
 			<% if (post.comments) { %>
 				<% post.comments.forEach(function(comment){ %>
-					<div>
+					<div class="comment-action">
+						<% if (sess.user && sess.user._id == post.user){ %>
+							<div class="pull-left">
+								<form action="/post/<%-post._id%>/comment/<%-comment._id%>" method="post">
+									<input type="hidden" name="_method" value="DELETE">
+									<button type="submit" class="btn btn-danger btn-small"><i class="icon-trash icon-white">x</i></button>
+								</form>
+							</div>
+						<% } %>
 						<strong><%- comment.email %>: </strong>
 						<span><%- comment.body  %></span>
 					</div>
