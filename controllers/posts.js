@@ -83,7 +83,6 @@ module.exports = function (app) {
 		},
 		destroy: function (req, res) {
 			var id = req.params.id;
-			console.log(id);
 			Post.remove({_id : id}, function (err) {
 				if (err){
 					throw err
@@ -97,15 +96,12 @@ module.exports = function (app) {
 
 		//Search
 		search: function (req, res) {
-			console.log(req.query.search);
 			var terms = {title: { $regex: req.query.search, $options: 'i' }}
-			console.log(terms);
 			Post.find(terms, function(err, posts){
 				params = { 
 					posts : posts,
 					tags : req.tags
 				};
-				console.log(params)
 				res.render('posts/index', params);
 			});
 		}
